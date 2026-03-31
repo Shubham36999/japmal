@@ -28,7 +28,7 @@ export async function GET() {
 
     // Group by date string YYYY-MM-DD
     const chartDataMap = new Map<string, number>();
-    recentEntries.forEach(entry => {
+    recentEntries.forEach((entry: { date: Date, count: number }) => {
       const dateStr = entry.date.toISOString().split('T')[0];
       chartDataMap.set(dateStr, (chartDataMap.get(dateStr) || 0) + entry.count);
     });
